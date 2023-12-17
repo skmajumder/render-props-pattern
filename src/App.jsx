@@ -38,7 +38,11 @@ export default function App() {
           title="Companies"
           items={companies}
           render={(company) => (
-            <CompanyItem key={company.companyName} company={company} />
+            <CompanyItem
+              key={company.companyName}
+              company={company}
+              defaultVisibility={true}
+            />
           )}
         />
       </div>
