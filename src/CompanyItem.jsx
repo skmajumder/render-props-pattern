@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function CompanyItem({ company, defaultVisibility }) {
+export default function CompanyItem({ company, defaultVisibility }) {
   const [isVisible, setIsVisisble] = useState(defaultVisibility);
 
   return (

@@ -1,7 +1,6 @@
 import { useState } from "react";
-import ProductItem from "./ProductItem";
 
-const List = ({ title, items }) => {
+const List = ({ title, items, render }) => {
   const [isOpen, setIsOpen] = useState(true);
   const [isCollapsed, setIsCollapsed] = useState(false);
 
@@ -20,13 +19,7 @@ const List = ({ title, items }) => {
           {isOpen ? <span>&or;</span> : <span>&and;</span>}
         </button>
       </div>
-      {isOpen && (
-        <ul className="list">
-          {displayItems.map((product) => (
-            <ProductItem key={product.productName} product={product} />
-          ))}
-        </ul>
-      )}
+      {isOpen && <ul className="list">{displayItems.map(render)}</ul>}
 
       <button onClick={() => setIsCollapsed((isCollapsed) => !isCollapsed)}>
         {isCollapsed ? `Show all ${items.length}` : "Show less"}
