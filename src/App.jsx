@@ -4,6 +4,10 @@ import "./styles.css";
 import List from "./List";
 import ProductItem from "./ProductItem";
 import CompanyItem from "./CompanyItem";
+import withToggles from "./Hoc";
+import ProductList from "./ProductList";
+
+const ProductListWithToggle = withToggles(ProductList);
 
 const products = Array.from({ length: 20 }, () => {
   return {
@@ -25,7 +29,7 @@ export default function App() {
     <div>
       <h1>Render Props Demo</h1>
 
-      <div className="col-2">
+      {/* <div className="col-2">
         <List
           title="Products"
           items={products}
@@ -45,6 +49,11 @@ export default function App() {
             />
           )}
         />
+      </div> */}
+
+      <div className="col-2">
+        <ProductList title="Products" items={products} />
+        <ProductListWithToggle title="Products HOCs" items={products} />
       </div>
     </div>
   );

@@ -1,10 +1,14 @@
 import { useState } from "react";
 
 export default function CompanyItem({ company, defaultVisibility }) {
-  const [isVisible] = useState(defaultVisibility);
+  const [isVisible, setIsVisisble] = useState(defaultVisibility);
 
   return (
-    <li className="company">
+    <li
+      className="company"
+      onMouseEnter={() => setIsVisisble(true)}
+      onMouseLeave={() => setIsVisisble(false)}
+    >
       <p className="company-name">{company.companyName}</p>
       {isVisible && (
         <p className="company-phrase">
