@@ -1,14 +1,14 @@
 import { useState } from "react";
 
 const List = ({ title, items, render }) => {
-  const [isOpen, setIsOpen] = useState(true);
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isListOpen, setIsListOpen] = useState(true);
+  const [isListCollapsed, setListCollapsed] = useState(false);
 
-  const displayItems = isCollapsed ? items.slice(0, 3) : items;
+  const displayItems = isListCollapsed ? items.slice(0, 3) : items;
 
   function toggleOpen() {
-    setIsOpen((isOpen) => !isOpen);
-    setIsCollapsed(false);
+    setIsListOpen((isListOpen) => !isListOpen);
+    setListCollapsed(false);
   }
 
   return (
@@ -16,13 +16,13 @@ const List = ({ title, items, render }) => {
       <div className="heading">
         <h2>{title}</h2>
         <button onClick={toggleOpen}>
-          {isOpen ? <span>&or;</span> : <span>&and;</span>}
+          {isListOpen ? <span>&or;</span> : <span>&and;</span>}
         </button>
       </div>
-      {isOpen && <ul className="list">{displayItems.map(render)}</ul>}
+      {isListOpen && <ul className="list">{displayItems.map(render)}</ul>}
 
-      <button onClick={() => setIsCollapsed((isCollapsed) => !isCollapsed)}>
-        {isCollapsed ? `Show all ${items.length}` : "Show less"}
+      <button onClick={() => setListCollapsed((collapsed) => !collapsed)}>
+        {isListCollapsed ? `Show all ${items.length}` : "Show less"}
       </button>
     </div>
   );
